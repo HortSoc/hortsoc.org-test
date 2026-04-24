@@ -32,6 +32,8 @@ jobs:
         run: npm ci
 
       - name: Build site
+        env:
+          GITHUB_PAGES_REPO_BASE: "true"
         run: npm run build
 
       - name: Publish dist to gh-pages
