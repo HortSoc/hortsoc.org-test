@@ -1,0 +1,110 @@
+---
+const title = "Hortsoc Admin";
+const buildRepoCmsUrl = "https://app.pagescms.org/hortsoc/hortsoc.org-build/codex%2Fpages-cms";
+const publicRepoCmsUrl = "https://app.pagescms.org/hortsoc/hortsoc.org";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <style is:global>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #f3f3f7;
+      }
+
+      .admin-gate {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        box-sizing: border-box;
+      }
+
+      .admin-gate-card {
+        width: min(26rem, 100%);
+        padding: 2rem 1.5rem;
+        background: #ffffff;
+        box-shadow: 0 18px 40px rgba(33, 36, 44, 0.1);
+        text-align: center;
+      }
+
+      .admin-gate-card h1 {
+        margin: 0 0 0.8rem;
+        font-size: 1.6rem;
+      }
+
+      .admin-gate-card p {
+        margin: 0 0 1.5rem;
+        color: #52565f;
+        line-height: 1.5;
+      }
+
+      .admin-login-button,
+      .admin-secondary-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 13rem;
+        padding: 0.85rem 1.1rem;
+        border: 0;
+        background: #2d333b;
+        color: #ffffff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .admin-login-button:hover,
+      .admin-login-button:focus-visible,
+      .admin-secondary-link:hover,
+      .admin-secondary-link:focus-visible {
+        background: #1f252c;
+      }
+
+      .admin-actions {
+        display: grid;
+        gap: 0.85rem;
+        justify-content: center;
+      }
+
+      .admin-status {
+        margin-top: 1rem;
+        color: #52565f;
+        font-size: 0.95rem;
+      }
+
+      .admin-help-link {
+        color: #2d333b;
+        font-weight: 700;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="admin-gate">
+      <section class="admin-gate-card">
+        <h1>Hortsoc Admin</h1>
+        <p>Editing now uses Pages CMS. Netlify-hosted Decap admin has been retired.</p>
+        <div class="admin-actions">
+          <a class="admin-login-button" href={publicRepoCmsUrl}>Open Live CMS Repo</a>
+          <a class="admin-secondary-link" href={buildRepoCmsUrl}>Open Build Validation Branch</a>
+        </div>
+        <p class="admin-status">Sign in with GitHub in Pages CMS to continue.</p>
+        <p>
+          Use the live repo for normal editorial work once rollout is complete. The build-repo branch remains the current migration validation workspace.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

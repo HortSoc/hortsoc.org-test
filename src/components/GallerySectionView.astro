@@ -1,0 +1,23 @@
+---
+import GalleryGrid from "./GalleryGrid.astro";
+
+const { section = null, sections = section ? [section] : [] } = Astro.props;
+---
+
+<section class="gallery-section-view page-shell">
+  <GalleryGrid sections={sections} />
+</section>
+
+<style>
+  .gallery-section-view {
+    display: grid;
+    padding-inline: var(--page-shell-padding);
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 56rem) {
+    .gallery-section-view {
+      padding-inline: var(--site-inner-padding);
+    }
+  }
+</style>

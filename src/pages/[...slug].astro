@@ -1,0 +1,147 @@
+---
+import PagePlaceholderNotice from "../components/PagePlaceholderNotice.astro";
+import SitePageView from "../components/SitePageView.astro";
+import BlogFilterView from "../components/BlogFilterView.astro";
+import { getPageGallerySections } from "../content/page-galleries.mjs";
+import {
+  blogPosts,
+  blogArchiveFilters,
+  blogCategoryFilters,
+  getBlogArchiveFilter,
+  getBlogCategoryFilter,
+  getBlogPostsByArchive,
+  getBlogPostsByCategory,
+} from "../content/blog-posts.mjs";
+import { getGalleryCollectionForPath, getGallerySectionForPath } from "../lib/gallery-data.mjs";
+import { pathToSlugParams, sitePages } from "../content/site-pages.mjs";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  const slugify = (value) => value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  const cmsPageModuleToRoute = ({ filePath, module }) => {
+    if (module.frontmatter.date) {
+      return null;
+    }
+
+    if (module.frontmatter.status !== "published") {
+      return null;
+    }
+
+    const slug = slugify(filePath.split("/").at(-1).replace(/\.md$/, ""));
+    const pagePath = module.frontmatter.path ?? `/${slug}/`;
+
+    return {
+      module,
+      page: {
+        title: module.frontmatter.title,
+        path: pagePath,
+        migration_status: "cms-created",
+      },
+    };
+  };
+
+  const migratedPageModules = import.meta.glob("../content/pages/*.md", { eager: true });
+  const migratedPagesByPath = new Map(
+    Object.values(migratedPageModules).map((module) => [module.frontmatter.path, module]),
+  );
+  const visibleSitePages = sitePages.filter((page) => migratedPagesByPath.get(page.path)?.frontmatter.status !== "draft");
+  const routedPagePaths = new Set(visibleSitePages.map((page) => page.path));
+  const cmsCreatedPages = Object.entries(migratedPageModules)
+    .map(([filePath, module]) => cmsPageModuleToRoute({ filePath, module }))
+    .filter((entry) => entry && !routedPagePaths.has(entry.page.path))
+    .filter(Boolean);
+  const cmsCreatedPagesByPath = new Map(cmsCreatedPages.map(({ page, module }) => [page.path, module]));
+  const cmsCreatedBlogPages = blogPosts
+    .filter((post) => !routedPagePaths.has(post.path))
+    .map((post) => ({
+      title: post.title,
+      path: post.path,
+      migration_status: "cms-created",
+    }));
+  const routedPages = visibleSitePages.concat(cmsCreatedBlogPages, cmsCreatedPages.map(({ page }) => page));
+
+  return routedPages.filter((page) => page.path !== "/").map((page) => ({
+    params: { slug: pathToSlugParams(page.path) },
+    props: { page, migratedPage: migratedPagesByPath.get(page.path) ?? cmsCreatedPagesByPath.get(page.path) ?? null },
+  })).concat(
+    blogCategoryFilters.map((category) => ({
+      params: { slug: pathToSlugParams(category.path) },
+      props: {
+        page: {
+          title: `${category.name} | Blog`,
+          path: category.path,
+          source_url: "https://hortsoc.org/blog/",
+        },
+        blogFilter: {
+          kind: "category",
+          title: category.name,
+          key: category.name,
+        },
+      },
+    })),
+    blogArchiveFilters.map((archive) => ({
+      params: { slug: pathToSlugParams(archive.path) },
+      props: {
+        page: {
+          title: `${archive.label} | Blog`,
+          path: archive.path,
+          source_url: "https://hortsoc.org/blog/",
+        },
+        blogFilter: {
+          kind: "archive",
+          title: archive.label,
+          key: archive.key,
+        },
+      },
+    })),
+  );
+}
+
+const { page, migratedPage, blogFilter = null } = Astro.props;
+const resolvedPage = migratedPage?.frontmatter ? { ...page, ...migratedPage.frontmatter } : page;
+const galleryCollection = getGalleryCollectionForPath(page.path);
+const gallerySection = getGallerySectionForPath(page.path);
+const pageGallerySections = getPageGallerySections(page.path);
+const pageTitle = `${resolvedPage.title} | Hortsoc.org`;
+const categoryFilter = blogFilter?.kind === "category" ? getBlogCategoryFilter(pathToSlugParams(page.path).split("/").at(-1)) : null;
+const archiveFilter = blogFilter?.kind === "archive" ? getBlogArchiveFilter(pathToSlugParams(page.path).split("/").at(-1)) : null;
+const filteredPosts = categoryFilter
+  ? getBlogPostsByCategory(categoryFilter.name)
+  : archiveFilter
+    ? getBlogPostsByArchive(archiveFilter.key)
+    : [];
+---
+
+<BaseLayout title={pageTitle} description={resolvedPage.title}>
+  {
+    blogFilter ? (
+      <BlogFilterView
+        page={resolvedPage}
+        posts={filteredPosts}
+        heading={blogFilter.kind === "category" ? `Category: ${blogFilter.title}` : `Archive: ${blogFilter.title}`}
+        intro={
+          blogFilter.kind === "category"
+            ? `Posts filed under ${blogFilter.title}.`
+            : `Posts published in ${blogFilter.title}.`
+        }
+        activeCategory={categoryFilter?.name ?? null}
+        activeArchive={archiveFilter?.key ?? null}
+      />
+    ) : (
+      <SitePageView
+        page={page}
+        migratedPage={migratedPage}
+        galleryCollection={galleryCollection}
+        gallerySection={gallerySection}
+        pageGallerySections={pageGallerySections}
+      >
+        <PagePlaceholderNotice slot="placeholder" page={resolvedPage} />
+      </SitePageView>
+    )
+  }
+</BaseLayout>

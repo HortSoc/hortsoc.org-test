@@ -1,0 +1,84 @@
+---
+import BlogSidebar from "./BlogSidebar.astro";
+import { formatBlogDate, getBlogPost, getBlogSidebarData } from "../content/blog-posts.mjs";
+
+const { page, Content } = Astro.props;
+const post = getBlogPost(page.path);
+const blogSidebarData = getBlogSidebarData();
+---
+
+<section class="blog-layout page-shell">
+  <article class="blog-post">
+    <header class="blog-post-header">
+      {post ? <p class="blog-post-date">{formatBlogDate(post.dateObject)}</p> : null}
+      <h1>{page.title}</h1>
+      {post?.categories?.length ? <p class="blog-post-categories">{post.categories.join(" · ")}</p> : null}
+    </header>
+
+    <div class="blog-post-body page-content">
+      <Content />
+    </div>
+  </article>
+
+  <BlogSidebar
+    categories={blogSidebarData.categories}
+    recentPosts={blogSidebarData.recentPosts}
+    archives={blogSidebarData.archives}
+  />
+</section>
+
+<style>
+  .blog-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(16rem, 0.9fr);
+    gap: 3.5rem;
+    padding: var(--page-shell-padding);
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  .blog-post {
+    display: grid;
+    gap: 2rem;
+    min-width: 0;
+  }
+
+  .blog-post-header {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .blog-post-date,
+  .blog-post-categories {
+    margin: 0;
+    font-family: var(--font-ui);
+    color: var(--page-muted-color);
+  }
+
+  .blog-post-date {
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
+
+  .blog-post-categories {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .blog-post-header h1 {
+    margin: 0;
+  }
+
+  .blog-post-body {
+    max-width: none;
+  }
+
+  @media (max-width: 72rem) {
+    .blog-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-inline: var(--site-inner-padding);
+    }
+  }
+</style>

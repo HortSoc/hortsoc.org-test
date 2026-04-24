@@ -1,0 +1,14 @@
+---
+import BlogIndexView from "./BlogIndexView.astro";
+
+const { page, posts = [], heading, intro, activeCategory = null, activeArchive = null } = Astro.props;
+---
+
+<BlogIndexView
+  page={page}
+  posts={posts}
+  heading={heading}
+  intro={intro}
+  activeCategory={activeCategory}
+  activeArchive={activeArchive}
+/>

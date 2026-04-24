@@ -1,0 +1,66 @@
+{
+  "primaryNavigation": [
+    { "label": "HOME", "href": "/" },
+    {
+      "label": "About",
+      "href": "/about/",
+      "children": [
+        { "label": "Gallery", "href": "/gallery/" },
+        { "label": "Schools Liaison", "href": "/schools-liaison/" },
+        { "label": "Tree Planting", "href": "/tree-planting/" }
+      ]
+    },
+    { "label": "Annual Show", "href": "/annual-show/" },
+    { "label": "Membership", "href": "/membership/" },
+    { "label": "What's On", "href": "/whats-on/" },
+    { "label": "CONTACTS", "href": "/contacts/" },
+    { "label": "Blog", "href": "/blog/" }
+  ],
+  "footerNavigation": [
+    { "label": "Who's Who", "href": "/whoswho/" },
+    { "label": "Schools Liaison", "href": "/schools-liaison/" },
+    { "label": "Blog", "href": "/blog/" }
+  ],
+  "footerFindUs": {
+    "title": "Find Us",
+    "map": {
+      "embed_url": "https://maps.google.com/maps?q=The%20Stoke%20Poges%20School,%20Rogers%20Lane,%20Stoke%20Poges,%20Bucks,%20SL2%204LN&z=15&output=embed",
+      "title": "Map showing The Stoke Poges School, Rogers Lane, Stoke Poges, Bucks, SL2 4LN"
+    },
+    "address": {
+      "label": "The Stoke Poges School, Rogers Lane, Stoke Poges, Bucks, SL2 4LN",
+      "href": "https://maps.google.com/?q=The+Stoke+Poges+School,+Rogers+Lane,+Stoke+Poges,+Bucks,+SL2+4LN",
+      "external": true
+    }
+  },
+  "footerMiddleSections": [
+    {
+      "title": "Links",
+      "items": [
+        { "label": "Farnham Common Nurseries", "href": "https://fcn.co.uk/", "external": true },
+        { "label": "RHS Plant Finder", "href": "https://www.rhs.org.uk/plants/search-form", "external": true },
+        { "label": "Royal Horticultural Society", "href": "https://www.rhs.org.uk/", "external": true },
+        { "label": "Stoke Poges Memorial Gardens", "href": "https://www.buckinghamshire.gov.uk/culture-and-tourism/parks-and-open-spaces/stoke-poges-memorial-gardens/", "external": true },
+        { "label": "The British Fuchsia Society", "href": "https://www.thebfs.org.uk/", "external": true },
+        { "label": "The National Sweet Pea Society", "href": "https://www.sweetpeas.org.uk/", "external": true },
+        { "label": "The National Vegetable Society", "href": "https://nvsuk.org.uk/", "external": true }
+      ]
+    },
+    {
+      "title": "Patrons",
+      "items": [
+        { "label": "Grundon Waste Management Ltd", "href": "https://www.grundon.com/", "external": true },
+        { "label": "Pinewood Nurseries", "href": "https://pinewoodnurseries.co.uk/", "external": true },
+        { "label": "Stoke Park", "href": "https://www.stokepark.com/", "external": true },
+        { "label": "Mobbs Memorial Trust", "href": "https://www.mobbsmemorialtrust.com/", "external": true }
+      ]
+    }
+  ],
+  "footerSearch": {
+    "title": "Search Our Website",
+    "action": "/search/",
+    "field_name": "q",
+    "placeholder": "Search …",
+    "button_label": "Search"
+  }
+}

@@ -1,0 +1,79 @@
+---
+import BlogIndexView from "./BlogIndexView.astro";
+import BlogPostView from "./BlogPostView.astro";
+import EditorialPageView from "./EditorialPageView.astro";
+import GalleryIndex from "./GalleryIndex.astro";
+import GalleryPageView from "./GalleryPageView.astro";
+import GallerySectionView from "./GallerySectionView.astro";
+import HomeFeatureGrid from "./HomeFeatureGrid.astro";
+import HomeBanner from "./HomeBanner.astro";
+import PageHero from "./PageHero.astro";
+import { isBlogPostPath } from "../content/blog-posts.mjs";
+
+const { page, migratedPage, galleryCollection = null, gallerySection = null, pageGallerySections = [] } = Astro.props;
+const resolvedPage = migratedPage?.frontmatter ? { ...page, ...migratedPage.frontmatter } : page;
+const Content = migratedPage?.default ?? null;
+---
+
+{
+  Content ? (
+    resolvedPage.path === "/" ? (
+      <>
+        <HomeBanner Content={Content} />
+        <HomeFeatureGrid />
+      </>
+    ) : resolvedPage.path === "/about/" ? (
+      <EditorialPageView page={resolvedPage} Content={Content} heroKey="about" />
+    ) : resolvedPage.path === "/membership/" ? (
+      <EditorialPageView page={resolvedPage} Content={Content} heroKey="membership" />
+    ) : resolvedPage.path === "/whats-on/" ? (
+      <EditorialPageView page={resolvedPage} Content={Content} heroKey="whats_on" />
+    ) : resolvedPage.path === "/gallery/" ? (
+      <>
+        <PageHero title={resolvedPage.title} />
+        <article class="panel content-body page-content page-shell">
+          <Content />
+        </article>
+        {galleryCollection ? <GalleryIndex sections={galleryCollection.sections} /> : null}
+      </>
+    ) : resolvedPage.path === "/blog/" ? (
+      <BlogIndexView page={resolvedPage} Content={Content} />
+    ) : isBlogPostPath(resolvedPage.path) ? (
+      <BlogPostView page={resolvedPage} Content={Content} />
+    ) : gallerySection ? (
+      <GalleryPageView page={resolvedPage} Content={Content} sections={[gallerySection]} />
+    ) : pageGallerySections.length > 0 ? (
+      <GalleryPageView page={resolvedPage} Content={Content} sections={pageGallerySections} />
+    ) : (
+      <>
+        <PageHero title={resolvedPage.title} />
+        <article class="panel content-body page-content page-shell">
+          <Content />
+        </article>
+      </>
+    )
+  ) : (
+    <>
+      <PageHero title={resolvedPage.title} />
+      <slot name="placeholder" />
+
+      <section>
+        <h2>Content Coming Soon</h2>
+        <p>
+          Reviewed content for this page has not been published yet. It will be added here once the page is ready.
+        </p>
+      </section>
+    </>
+  )
+}
+
+<style>
+  .content-body {
+    padding: var(--page-shell-padding);
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+</style>

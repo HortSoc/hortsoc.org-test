@@ -1,0 +1,100 @@
+---
+import { withBase } from "../lib/urls.mjs";
+
+const { categories = [], recentPosts = [], archives = [], activeCategory = null, activeArchive = null } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
+---
+
+<aside class="blog-sidebar">
+  <section class="sidebar-section">
+    <h2>- CATEGORIES -</h2>
+    <ul>
+      {categories.map((category) => (
+        <li>
+          <a class:list={[activeCategory === category.name && "is-active"]} href={withBase(category.path, basePath)}>
+            {category.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="sidebar-section">
+    <h2>- RECENT POSTS -</h2>
+    <ul>
+      {recentPosts.map((post) => (
+        <li>
+          <a href={withBase(post.path, basePath)}>{post.title}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="sidebar-section">
+    <h2>- ARCHIVES -</h2>
+    <ul>
+      {archives.map((archive) => (
+        <li>
+          <a class:list={[activeArchive === archive.key && "is-active"]} href={withBase(archive.path, basePath)}>
+            {archive.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</aside>
+
+<style>
+  .blog-sidebar {
+    display: grid;
+    gap: 2.75rem;
+    align-content: start;
+  }
+
+  .sidebar-section {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .sidebar-section h2 {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #5f5f5f;
+  }
+
+  .sidebar-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(120, 120, 120, 0.16);
+  }
+
+  .sidebar-section li {
+    margin: 0;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid rgba(120, 120, 120, 0.16);
+    color: #6a6a6a;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .sidebar-section a {
+    color: #6f8b1d;
+    text-decoration: none;
+  }
+
+  .sidebar-section a:hover,
+  .sidebar-section a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .sidebar-section a.is-active {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+</style>

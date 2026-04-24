@@ -1,0 +1,891 @@
+media:
+  - name: site_images
+    label: Site Images
+    input: public/media/site
+    output: /media/site
+    categories: [image]
+  - name: blog_images
+    label: Blog Images
+    input: public/media/blog
+    output: /media/blog
+    categories: [image]
+  - name: gallery_images
+    label: Gallery Images
+    input: public/media/galleries
+    output: /media/galleries
+    categories: [image]
+  - name: uploads
+    label: Shared Uploads
+    input: public/media/uploads
+    output: /media/uploads
+
+settings:
+  hide: true
+  content:
+    merge: true
+
+content:
+  - name: pages
+    label: Pages
+    type: group
+    items:
+      - name: homepage
+        label: Homepage
+        type: group
+        items:
+          - name: home_page_copy
+            label: Intro Copy
+            type: file
+            path: src/content/pages/home.md
+            format: yaml-frontmatter
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: path
+                label: Public URL
+                type: string
+                readonly: true
+                required: false
+              - name: body
+                label: Body
+                type: rich-text
+                options:
+                  format: markdown
+                  media: uploads
+                  path: pages
+          - name: homepage_content
+            label: Sections
+            type: file
+            path: src/content/site-assets.json
+            format: json
+            fields:
+              - name: siteAssetPlan
+                label: Homepage
+                type: object
+                fields:
+                  - name: home_hero
+                    label: Hero
+                    type: object
+                    fields:
+                      - name: current_path
+                        label: Image
+                        type: image
+                        options:
+                          media: site_images
+                          path: heroes/home
+                      - name: alt
+                        label: Alt Text
+                        type: string
+                  - name: home_feature_cards
+                    label: Feature Cards
+                    type: object
+                    list: true
+                    fields:
+                      - name: title
+                        label: Title
+                        type: string
+                      - name: href
+                        label: Link
+                        type: string
+                      - name: summary
+                        label: Summary
+                        type: text
+                      - name: image
+                        label: Image
+                        type: object
+                        fields:
+                          - name: current_path
+                            label: Image
+                            type: image
+                            options:
+                              media: site_images
+                              path: home/cards
+                          - name: alt
+                            label: Alt Text
+                            type: string
+                  - name: home_spotlight
+                    label: Spotlight
+                    type: object
+                    fields:
+                      - name: title
+                        label: Title
+                        type: string
+                      - name: image
+                        label: Image
+                        type: object
+                        fields:
+                          - name: current_path
+                            label: Image
+                            type: image
+                            options:
+                              media: site_images
+                              path: home/spotlight
+                          - name: alt
+                            label: Alt Text
+                            type: string
+                  - name: home_notice
+                    label: Notice
+                    type: object
+                    fields:
+                      - name: title
+                        label: Title
+                        type: string
+                      - name: body
+                        label: Body
+                        type: text
+                  - name: home_poster
+                    label: Poster
+                    type: object
+                    fields:
+                      - name: current_path
+                        label: Image
+                        type: image
+                        options:
+                          media: site_images
+                          path: home/posters
+                      - name: alt
+                        label: Alt Text
+                        type: string
+      - name: ordinary_pages
+        label: Ordinary Pages
+        type: collection
+        path: src/content/pages
+        filename: "{primary}.md"
+        format: yaml-frontmatter
+        exclude:
+          - home.md
+          - blog.md
+          - gallery.md
+          - gallery-annual-show-2024.md
+          - gallery-annual-show-2023.md
+          - gallery-annual-show-2022.md
+          - gallery-annual-show-2021.md
+          - gallery-plant-sale-2021.md
+          - thing-one.md
+          - testimonial-872.md
+          - ruth-rooley-chairman.md
+          - summer-newsletter.md
+          - little-green-fingers.md
+          - from-the-pumpkin-patch.md
+          - metaldehyde-slug-pellets-banned.md
+          - queen-award-for-voluntary-service.md
+          - april-seasonal-tips.md
+        view:
+          fields: [title, status]
+          primary: title
+          sort: [title]
+          default:
+            sort: title
+            order: asc
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: status
+            label: Status
+            type: select
+            required: false
+            options:
+              values:
+                - value: draft
+                  label: Draft
+                - value: published
+                  label: Published
+          - name: path
+            label: Public URL
+            type: string
+            readonly: true
+            required: false
+          - name: body
+            label: Body
+            type: rich-text
+            options:
+              format: markdown
+              media: uploads
+              path: pages
+      - name: blog_landing_page
+        label: Blog Landing Page
+        type: file
+        path: src/content/pages/blog.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: path
+            label: Public URL
+            type: string
+            readonly: true
+            required: false
+          - name: body
+            label: Body
+            type: rich-text
+            options:
+              format: markdown
+              media: uploads
+              path: blog
+
+  - name: site_structure
+    label: Site Structure
+    type: group
+    items:
+      - name: site_navigation
+        label: Navigation
+        type: file
+        path: src/content/site-navigation.json
+        format: json
+        fields:
+          - name: primaryNavigation
+            label: Primary Navigation
+            type: object
+            list: true
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: href
+                label: Link
+                type: string
+              - name: children
+                label: Children
+                type: object
+                list: true
+                required: false
+                fields:
+                  - name: label
+                    label: Label
+                    type: string
+                  - name: href
+                    label: Link
+                    type: string
+          - name: footerNavigation
+            label: Footer Navigation
+            type: object
+            list: true
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: href
+                label: Link
+                type: string
+          - name: footerFindUs
+            label: Find Us
+            type: object
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: map
+                label: Map
+                type: object
+                fields:
+                  - name: embed_url
+                    label: Embed URL
+                    type: string
+                  - name: title
+                    label: Title
+                    type: string
+              - name: address
+                label: Address
+                type: object
+                fields:
+                  - name: label
+                    label: Label
+                    type: string
+                  - name: href
+                    label: Link
+                    type: string
+                  - name: external
+                    label: External Link
+                    type: boolean
+          - name: footerMiddleSections
+            label: Footer Sections
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: items
+                label: Links
+                type: object
+                list: true
+                fields:
+                  - name: label
+                    label: Label
+                    type: string
+                  - name: href
+                    label: Link
+                    type: string
+                  - name: external
+                    label: External Link
+                    type: boolean
+          - name: footerSearch
+            label: Footer Search
+            type: object
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: action
+                label: Action
+                type: string
+              - name: field_name
+                label: Query Field Name
+                type: string
+              - name: placeholder
+                label: Placeholder
+                type: string
+              - name: button_label
+                label: Button Label
+                type: string
+
+  - name: blog_categories
+    label: Blog Categories
+    type: collection
+    path: src/content/blog-categories
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      fields: [label, name]
+      primary: label
+      sort: [label]
+      default:
+        sort: label
+        order: asc
+    fields:
+      - name: label
+        label: Display Name
+        type: string
+      - name: name
+        label: Stored Value
+        type: string
+      - name: description
+        label: Description
+        type: text
+        required: false
+
+  - name: blog_posts
+    label: Blog Posts
+    type: collection
+    path: src/content/pages
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    exclude:
+      - home.md
+      - about.md
+      - annual-show.md
+      - blog.md
+      - contacts.md
+      - gallery.md
+      - gallery-annual-show-2024.md
+      - gallery-annual-show-2023.md
+      - gallery-annual-show-2022.md
+      - gallery-annual-show-2021.md
+      - gallery-plant-sale-2021.md
+      - membership.md
+      - thing-one.md
+      - schools-liaison.md
+      - testimonial-872.md
+      - ruth-rooley-chairman.md
+      - tree-planting.md
+      - whats-on.md
+      - whoswho.md
+      - winners-2021.md
+    view:
+      fields: [title, date, categories]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: date
+        label: Date
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+      - name: categories
+        label: Categories
+        type: reference
+        options:
+          collection: blog_categories
+          multiple: true
+          search: label,name
+          value: "{name}"
+          label: "{label}"
+      - name: excerpt
+        label: Excerpt
+        type: text
+      - name: featuredImage
+        label: Featured Image
+        type: object
+        required: false
+        fields:
+          - name: src
+            label: Image
+            type: image
+            required: false
+            options:
+              media: blog_images
+          - name: alt
+            label: Alt Text
+            type: string
+            required: false
+      - name: body
+        label: Body
+        type: rich-text
+        options:
+          format: markdown
+          media: uploads
+          path: blog
+
+  - name: galleries
+    label: Galleries
+    type: group
+    items:
+      - name: gallery_landing_page
+        label: Gallery Landing Page
+        type: file
+        path: src/content/pages/gallery.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: path
+            label: Public URL
+            type: string
+            readonly: true
+            required: false
+          - name: body
+            label: Body
+            type: rich-text
+            options:
+              format: markdown
+              media: uploads
+              path: gallery
+      - name: gallery_events
+        label: Gallery Events
+        type: group
+        items:
+          - name: annual_show_2024_gallery
+            label: Annual Show 2024
+            type: file
+            path: src/content/gallery-events/annual-show-2024.json
+            format: json
+            fields: &gallery_event_fields
+              - name: title
+                label: Title
+                type: string
+              - name: path
+                label: Public URL
+                type: string
+                readonly: true
+              - name: summary
+                label: Summary
+                type: text
+              - name: groups
+                label: Image Groups
+                type: object
+                list: true
+                fields: &gallery_group_fields
+                  - name: title
+                    label: Group Title
+                    type: string
+                  - name: items
+                    label: Images
+                    type: object
+                    list: true
+                    fields: &gallery_item_fields
+                      - name: title
+                        label: Image Title
+                        type: string
+                      - name: image_url
+                        label: Image
+                        type: image
+                        options:
+                          media: gallery_images
+                      - name: caption
+                        label: Caption
+                        type: text
+                        required: false
+                      - name: wordpress_id
+                        label: WordPress ID
+                        type: number
+                        readonly: true
+                        required: false
+                        hidden: true
+                      - name: image_path
+                        label: Original Image Path
+                        type: string
+                        readonly: true
+                        hidden: true
+                      - name: legacy_attachment_url
+                        label: Legacy Attachment URL
+                        type: string
+                        readonly: true
+                        hidden: true
+                      - name: legacy_attachment_path
+                        label: Legacy Attachment Path
+                        type: string
+                        readonly: true
+                        hidden: true
+                      - name: notes
+                        label: Internal Notes
+                        type: text
+                        readonly: true
+                        hidden: true
+                  - name: slug
+                    label: Slug
+                    type: string
+                    readonly: true
+                    hidden: true
+                  - name: source_type
+                    label: Source Type
+                    type: string
+                    readonly: true
+                    hidden: true
+                  - name: gallery_type
+                    label: Gallery Type
+                    type: string
+                    readonly: true
+                    required: false
+                    hidden: true
+                  - name: source_block_index
+                    label: Source Block Index
+                    type: number
+                    readonly: true
+                    required: false
+                    hidden: true
+                  - name: notes
+                    label: Internal Notes
+                    type: text
+                    readonly: true
+                    hidden: true
+              - name: slug
+                label: Slug
+                type: string
+                readonly: true
+                hidden: true
+              - name: source_url
+                label: Source URL
+                type: string
+                readonly: true
+                hidden: true
+              - name: notes
+                label: Internal Notes
+                type: text
+                readonly: true
+                hidden: true
+          - name: annual_show_2023_gallery
+            label: Annual Show 2023
+            type: file
+            path: src/content/gallery-events/annual-show-2023.json
+            format: json
+            fields: *gallery_event_fields
+          - name: annual_show_2022_gallery
+            label: Annual Show 2022
+            type: file
+            path: src/content/gallery-events/annual-show-2022.json
+            format: json
+            fields: *gallery_event_fields
+          - name: annual_show_2021_gallery
+            label: Annual Show 2021
+            type: file
+            path: src/content/gallery-events/annual-show-2021.json
+            format: json
+            fields: *gallery_event_fields
+          - name: plant_sale_2021_gallery
+            label: Plant Sale 2021
+            type: file
+            path: src/content/gallery-events/plant-sale-2021.json
+            format: json
+            fields: *gallery_event_fields
+      - name: page_galleries
+        label: Page Galleries
+        type: group
+        items:
+          - name: schools_liaison_page_gallery
+            label: Schools Liaison
+            type: file
+            path: src/content/page-gallery-sections/schools-liaison.json
+            format: json
+            fields: &page_gallery_fields
+              - name: host_page
+                label: Host Page
+                type: string
+                readonly: true
+              - name: sections
+                label: Gallery Sections
+                type: object
+                list: true
+                fields:
+                  - name: title
+                    label: Section Title
+                    type: string
+                  - name: summary
+                    label: Summary
+                    type: text
+                  - name: groups
+                    label: Image Groups
+                    type: object
+                    list: true
+                    fields: *gallery_group_fields
+                  - name: slug
+                    label: Slug
+                    type: string
+                    readonly: true
+                    hidden: true
+                  - name: path
+                    label: Public URL
+                    type: string
+                    readonly: true
+                    hidden: true
+                  - name: source_url
+                    label: Source URL
+                    type: string
+                    readonly: true
+                    hidden: true
+                  - name: notes
+                    label: Internal Notes
+                    type: text
+                    readonly: true
+                    hidden: true
+          - name: tree_planting_page_gallery
+            label: Tree Planting
+            type: file
+            path: src/content/page-gallery-sections/tree-planting.json
+            format: json
+            fields: *page_gallery_fields
+
+  - name: shared_assets
+    label: Shared Assets
+    type: file
+    path: src/content/site-assets.json
+    format: json
+    fields:
+      - name: siteBrand
+        label: Site Brand
+        type: object
+        fields:
+          - name: name
+            label: Name
+            type: string
+          - name: shortName
+            label: Short Name
+            type: string
+          - name: tagline
+            label: Tagline
+            type: text
+          - name: footerNote
+            label: Footer Note
+            type: text
+          - name: location
+            label: Location
+            type: string
+      - name: siteAssetPlan
+        label: Site Assets
+        type: object
+        fields:
+          - name: masthead_banner
+            label: Masthead Banner
+            type: object
+            fields:
+              - name: current_path
+                label: Image
+                type: image
+                options:
+                  media: site_images
+                  path: branding
+              - name: source_url
+                label: Source URL
+                type: string
+              - name: alt
+                label: Alt Text
+                type: string
+              - name: status
+                label: Status
+                type: string
+              - name: notes
+                label: Notes
+                type: text
+          - name: home_hero
+            label: Home Hero
+            type: object
+            hidden: true
+            fields:
+              - name: current_path
+                label: Image
+                type: image
+                options:
+                  media: site_images
+                  path: heroes/home
+              - name: source_url
+                label: Source URL
+                type: string
+              - name: alt
+                label: Alt Text
+                type: string
+              - name: status
+                label: Status
+                type: string
+              - name: notes
+                label: Notes
+                type: text
+          - name: annual_show_banner
+            label: Annual Show Banner
+            type: object
+            fields:
+              - name: planned_path
+                label: Planned Path
+                type: string
+              - name: alt
+                label: Alt Text
+                type: string
+              - name: status
+                label: Status
+                type: string
+              - name: notes
+                label: Notes
+                type: text
+          - name: page_heroes
+            label: Page Heroes
+            type: object
+            fields:
+              - name: about
+                label: About
+                type: object
+                fields:
+                  - name: current_path
+                    label: Image
+                    type: image
+                    options:
+                      media: site_images
+                      path: heroes/pages/about
+                  - name: source_url
+                    label: Source URL
+                    type: string
+                  - name: alt
+                    label: Alt Text
+                    type: string
+                  - name: status
+                    label: Status
+                    type: string
+                  - name: notes
+                    label: Notes
+                    type: text
+              - name: membership
+                label: Membership
+                type: object
+                fields:
+                  - name: current_path
+                    label: Image
+                    type: image
+                    options:
+                      media: site_images
+                      path: heroes/pages/membership
+                  - name: source_url
+                    label: Source URL
+                    type: string
+                  - name: alt
+                    label: Alt Text
+                    type: string
+                  - name: status
+                    label: Status
+                    type: string
+                  - name: notes
+                    label: Notes
+                    type: text
+              - name: whats_on
+                label: What's On
+                type: object
+                fields:
+                  - name: current_path
+                    label: Image
+                    type: image
+                    options:
+                      media: site_images
+                      path: heroes/pages/whats-on
+                  - name: source_url
+                    label: Source URL
+                    type: string
+                  - name: alt
+                    label: Alt Text
+                    type: string
+                  - name: status
+                    label: Status
+                    type: string
+                  - name: notes
+                    label: Notes
+                    type: text
+          - name: home_spotlight
+            label: Home Spotlight
+            type: object
+            hidden: true
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: image
+                label: Image
+                type: object
+                fields:
+                  - name: current_path
+                    label: Image
+                    type: image
+                    options:
+                      media: site_images
+                      path: home/spotlight
+                  - name: source_url
+                    label: Source URL
+                    type: string
+                  - name: alt
+                    label: Alt Text
+                    type: string
+                  - name: status
+                    label: Status
+                    type: string
+              - name: notes
+                label: Notes
+                type: text
+          - name: home_notice
+            label: Home Notice
+            type: object
+            hidden: true
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: body
+                label: Body
+                type: text
+          - name: home_poster
+            label: Home Poster
+            type: object
+            hidden: true
+            fields:
+              - name: current_path
+                label: Image
+                type: image
+                options:
+                  media: site_images
+                  path: home/posters
+              - name: source_url
+                label: Source URL
+                type: string
+              - name: alt
+                label: Alt Text
+                type: string
+              - name: status
+                label: Status
+                type: string
+              - name: notes
+                label: Notes
+                type: text

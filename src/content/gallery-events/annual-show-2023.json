@@ -1,0 +1,389 @@
+{
+  "slug": "annual-show-2023",
+  "title": "ANNUAL SHOW 2023",
+  "path": "/gallery/annual-show-2023/",
+  "source_url": "https://hortsoc.org/gallery/",
+  "summary": "A selection of photographs from the 2023 Annual Show.",
+  "notes": "Structured under the canonical /gallery/ landing page; legacy attachment URLs remain redirect-only history.",
+  "groups": [
+    {
+      "slug": "annual-show-2023",
+      "title": "ANNUAL SHOW 2023",
+      "source_type": "jetpack_tiled_gallery",
+      "source_block_index": 1,
+      "notes": "Imported from a Jetpack tiled-gallery block and rendered as direct image cards on the canonical /gallery/ page.",
+      "items": [
+        {
+          "wordpress_id": 2247,
+          "title": "1",
+          "image_url": "/media/galleries/annual-show-2023/1.jpg",
+          "image_path": "/wp-content/uploads/2023/08/1.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/1-2/#main",
+          "legacy_attachment_path": "/gallery/1-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2248,
+          "title": "2",
+          "image_url": "/media/galleries/annual-show-2023/2.jpg",
+          "image_path": "/wp-content/uploads/2023/08/2.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/2-2/#main",
+          "legacy_attachment_path": "/gallery/2-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2249,
+          "title": "3",
+          "image_url": "/media/galleries/annual-show-2023/3.jpg",
+          "image_path": "/wp-content/uploads/2023/08/3.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/3-2/#main",
+          "legacy_attachment_path": "/gallery/3-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2250,
+          "title": "4",
+          "image_url": "/media/galleries/annual-show-2023/4.jpg",
+          "image_path": "/wp-content/uploads/2023/08/4.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/4-2/#main",
+          "legacy_attachment_path": "/gallery/4-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2251,
+          "title": "5",
+          "image_url": "/media/galleries/annual-show-2023/5.jpg",
+          "image_path": "/wp-content/uploads/2023/08/5.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/5-2/#main",
+          "legacy_attachment_path": "/gallery/5-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2252,
+          "title": "6",
+          "image_url": "/media/galleries/annual-show-2023/6.jpg",
+          "image_path": "/wp-content/uploads/2023/08/6.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/6/#main",
+          "legacy_attachment_path": "/gallery/attachment/6/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2253,
+          "title": "7",
+          "image_url": "/media/galleries/annual-show-2023/7.jpg",
+          "image_path": "/wp-content/uploads/2023/08/7.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/7/#main",
+          "legacy_attachment_path": "/gallery/attachment/7/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2254,
+          "title": "8",
+          "image_url": "/media/galleries/annual-show-2023/8.jpg",
+          "image_path": "/wp-content/uploads/2023/08/8.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/8/#main",
+          "legacy_attachment_path": "/gallery/attachment/8/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2255,
+          "title": "9",
+          "image_url": "/media/galleries/annual-show-2023/9.jpg",
+          "image_path": "/wp-content/uploads/2023/08/9.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/9/#main",
+          "legacy_attachment_path": "/gallery/attachment/9/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2256,
+          "title": "10",
+          "image_url": "/media/galleries/annual-show-2023/10.jpg",
+          "image_path": "/wp-content/uploads/2023/08/10.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/10/#main",
+          "legacy_attachment_path": "/gallery/attachment/10/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2257,
+          "title": "11",
+          "image_url": "/media/galleries/annual-show-2023/11.jpg",
+          "image_path": "/wp-content/uploads/2023/08/11.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/11/#main",
+          "legacy_attachment_path": "/gallery/attachment/11/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2258,
+          "title": "12",
+          "image_url": "/media/galleries/annual-show-2023/12.jpg",
+          "image_path": "/wp-content/uploads/2023/08/12.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/12-2/#main",
+          "legacy_attachment_path": "/gallery/12-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2259,
+          "title": "13",
+          "image_url": "/media/galleries/annual-show-2023/13.jpg",
+          "image_path": "/wp-content/uploads/2023/08/13.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/13-2/#main",
+          "legacy_attachment_path": "/gallery/13-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2260,
+          "title": "14",
+          "image_url": "/media/galleries/annual-show-2023/14.jpg",
+          "image_path": "/wp-content/uploads/2023/08/14.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/14-2/#main",
+          "legacy_attachment_path": "/gallery/14-2/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2262,
+          "title": "15",
+          "image_url": "/media/galleries/annual-show-2023/15.jpg",
+          "image_path": "/wp-content/uploads/2023/08/15.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/15/#main",
+          "legacy_attachment_path": "/gallery/attachment/15/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2263,
+          "title": "16",
+          "image_url": "/media/galleries/annual-show-2023/16.jpg",
+          "image_path": "/wp-content/uploads/2023/08/16.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/16/#main",
+          "legacy_attachment_path": "/gallery/attachment/16/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2264,
+          "title": "17",
+          "image_url": "/media/galleries/annual-show-2023/17.jpg",
+          "image_path": "/wp-content/uploads/2023/08/17.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/17/#main",
+          "legacy_attachment_path": "/gallery/attachment/17/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2265,
+          "title": "18",
+          "image_url": "/media/galleries/annual-show-2023/18.jpg",
+          "image_path": "/wp-content/uploads/2023/08/18.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/18/#main",
+          "legacy_attachment_path": "/gallery/attachment/18/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2266,
+          "title": "19",
+          "image_url": "/media/galleries/annual-show-2023/19.jpg",
+          "image_path": "/wp-content/uploads/2023/08/19.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/19/#main",
+          "legacy_attachment_path": "/gallery/attachment/19/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2267,
+          "title": "20",
+          "image_url": "/media/galleries/annual-show-2023/20.jpg",
+          "image_path": "/wp-content/uploads/2023/08/20.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/20/#main",
+          "legacy_attachment_path": "/gallery/attachment/20/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2268,
+          "title": "21",
+          "image_url": "/media/galleries/annual-show-2023/21.jpg",
+          "image_path": "/wp-content/uploads/2023/08/21.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/21/#main",
+          "legacy_attachment_path": "/gallery/attachment/21/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2269,
+          "title": "22",
+          "image_url": "/media/galleries/annual-show-2023/22.jpg",
+          "image_path": "/wp-content/uploads/2023/08/22.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/22/#main",
+          "legacy_attachment_path": "/gallery/attachment/22/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2270,
+          "title": "23",
+          "image_url": "/media/galleries/annual-show-2023/23.jpg",
+          "image_path": "/wp-content/uploads/2023/08/23.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/23/#main",
+          "legacy_attachment_path": "/gallery/attachment/23/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2271,
+          "title": "24",
+          "image_url": "/media/galleries/annual-show-2023/24.jpg",
+          "image_path": "/wp-content/uploads/2023/08/24.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/24/#main",
+          "legacy_attachment_path": "/gallery/attachment/24/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2272,
+          "title": "25",
+          "image_url": "/media/galleries/annual-show-2023/25.jpg",
+          "image_path": "/wp-content/uploads/2023/08/25.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/25/#main",
+          "legacy_attachment_path": "/gallery/attachment/25/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2274,
+          "title": "26",
+          "image_url": "/media/galleries/annual-show-2023/26.jpg",
+          "image_path": "/wp-content/uploads/2023/08/26.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/26/#main",
+          "legacy_attachment_path": "/gallery/attachment/26/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2275,
+          "title": "27",
+          "image_url": "/media/galleries/annual-show-2023/27.jpg",
+          "image_path": "/wp-content/uploads/2023/08/27.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/27/#main",
+          "legacy_attachment_path": "/gallery/attachment/27/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2276,
+          "title": "28",
+          "image_url": "/media/galleries/annual-show-2023/28.jpg",
+          "image_path": "/wp-content/uploads/2023/08/28.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/28/#main",
+          "legacy_attachment_path": "/gallery/attachment/28/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2277,
+          "title": "29",
+          "image_url": "/media/galleries/annual-show-2023/29.jpg",
+          "image_path": "/wp-content/uploads/2023/08/29.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/29/#main",
+          "legacy_attachment_path": "/gallery/attachment/29/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2278,
+          "title": "30",
+          "image_url": "/media/galleries/annual-show-2023/30.jpg",
+          "image_path": "/wp-content/uploads/2023/08/30.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/30/#main",
+          "legacy_attachment_path": "/gallery/attachment/30/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2279,
+          "title": "31",
+          "image_url": "/media/galleries/annual-show-2023/31.jpg",
+          "image_path": "/wp-content/uploads/2023/08/31.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/31/#main",
+          "legacy_attachment_path": "/gallery/attachment/31/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2280,
+          "title": "32",
+          "image_url": "/media/galleries/annual-show-2023/32.jpg",
+          "image_path": "/wp-content/uploads/2023/08/32.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/32/#main",
+          "legacy_attachment_path": "/gallery/attachment/32/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2282,
+          "title": "33",
+          "image_url": "/media/galleries/annual-show-2023/33.jpg",
+          "image_path": "/wp-content/uploads/2023/08/33.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/33/#main",
+          "legacy_attachment_path": "/gallery/attachment/33/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2283,
+          "title": "34",
+          "image_url": "/media/galleries/annual-show-2023/34.jpg",
+          "image_path": "/wp-content/uploads/2023/08/34.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/34/#main",
+          "legacy_attachment_path": "/gallery/attachment/34/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2284,
+          "title": "35",
+          "image_url": "/media/galleries/annual-show-2023/35.jpg",
+          "image_path": "/wp-content/uploads/2023/08/35.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/35/#main",
+          "legacy_attachment_path": "/gallery/attachment/35/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2285,
+          "title": "36",
+          "image_url": "/media/galleries/annual-show-2023/36.jpg",
+          "image_path": "/wp-content/uploads/2023/08/36.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/36/#main",
+          "legacy_attachment_path": "/gallery/attachment/36/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        },
+        {
+          "wordpress_id": 2286,
+          "title": "37",
+          "image_url": "/media/galleries/annual-show-2023/37.jpg",
+          "image_path": "/wp-content/uploads/2023/08/37.jpg",
+          "legacy_attachment_url": "https://hortsoc.org/gallery/attachment/37/#main",
+          "legacy_attachment_path": "/gallery/attachment/37/",
+          "caption": null,
+          "notes": "Imported from the Jetpack tiled-gallery block on the WordPress Gallery page."
+        }
+      ]
+    }
+  ]
+}

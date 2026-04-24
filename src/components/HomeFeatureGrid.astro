@@ -1,0 +1,230 @@
+---
+import { siteAssetPlan } from "../content/site-assets.mjs";
+import { withBase } from "../lib/urls.mjs";
+
+const cards = siteAssetPlan.home_feature_cards ?? [];
+const spotlight = siteAssetPlan.home_spotlight;
+const notice = siteAssetPlan.home_notice;
+const poster = siteAssetPlan.home_poster;
+const basePath = import.meta.env.BASE_URL;
+---
+
+<section class="home-sections">
+  <div class="feature-grid">
+    {cards.map((card) => (
+      <article class="feature-card">
+        <h2 class="feature-title">- {card.title.toUpperCase()} -</h2>
+        <a class="feature-image-link" href={withBase(card.href, basePath)}>
+          <img src={withBase(card.image.current_path, basePath)} alt={card.image.alt} loading="lazy" />
+        </a>
+        <div class="feature-copy">
+          <p>{card.summary}</p>
+          <a class="feature-link" href={withBase(card.href, basePath)}>Read more <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <section class="widget-row">
+    <div class="widget-column widget-column-left">
+      <section class="spotlight-card">
+        <img src={withBase(spotlight.image.current_path, basePath)} alt={spotlight.image.alt} loading="lazy" />
+        <p class="spotlight-callout">{notice.body}</p>
+      </section>
+    </div>
+
+    <div class="widget-column widget-column-right">
+      <section class="poster-card">
+        <img src={withBase(poster.current_path, basePath)} alt={poster.alt} loading="lazy" />
+      </section>
+    </div>
+  </section>
+</section>
+
+<style>
+  .home-sections {
+    display: grid;
+    gap: 0;
+    background: #ffffff;
+    padding: 2rem clamp(2rem, 5vw, 5rem) 0;
+    font-family: var(--font-ui);
+  }
+
+  .feature-grid {
+    display: grid;
+    gap: clamp(1.35rem, 2.4vw, 2.9rem);
+  }
+
+  .feature-card {
+    display: grid;
+    align-content: start;
+    gap: 0.45rem;
+    background: transparent;
+    border: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .feature-title {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: clamp(1rem, 1.65vw, 1.3rem);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #606060;
+  }
+
+  .feature-image-link,
+  .feature-image-link img {
+    display: block;
+  }
+
+  .feature-image-link img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: rgba(73, 98, 54, 0.12);
+    border-radius: 0;
+  }
+
+  .feature-copy {
+    display: grid;
+    gap: 0.3rem;
+    padding: 0.25rem 0 0;
+  }
+
+  .feature-copy p,
+  .spotlight-card p {
+    margin: 0;
+    font-family: var(--font-ui);
+    color: #4f4f4f;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .feature-link,
+  .feature-link:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    width: fit-content;
+    font-family: var(--font-ui);
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #607518;
+    text-decoration: none;
+  }
+
+  .widget-row {
+    display: grid;
+    gap: clamp(1.35rem, 2.4vw, 2.9rem);
+    align-items: start;
+    width: 100%;
+    margin-top: clamp(3.25rem, 5vw, 4.5rem);
+  }
+
+  .widget-column {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .spotlight-card img,
+  .poster-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .spotlight-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .spotlight-card img {
+    width: 100%;
+    max-width: none;
+  }
+
+  .spotlight-callout {
+    color: #1148c4;
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+    text-align: left;
+    max-width: none;
+    width: 100%;
+  }
+
+  .poster-card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .poster-card img {
+    width: min(100%, 30rem);
+  }
+
+  .feature-link:hover,
+  .feature-link:focus-visible {
+    color: #4f6115;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16rem;
+  }
+
+  @media (min-width: 52rem) {
+    .feature-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .widget-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--site-column-gap);
+    }
+
+    .widget-column-left,
+    .widget-column-right {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .widget-column-right {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 51.99rem) {
+    .home-sections {
+      padding: 1.4rem clamp(1rem, 4vw, 1.25rem) 0;
+    }
+
+    .widget-row {
+      margin-top: 2.1rem;
+    }
+
+    .spotlight-card {
+      align-items: center;
+    }
+
+    .spotlight-card img,
+    .spotlight-callout {
+      max-width: 44rem;
+    }
+
+    .poster-card {
+      justify-content: center;
+    }
+
+    .spotlight-callout {
+      text-align: center;
+    }
+  }
+</style>

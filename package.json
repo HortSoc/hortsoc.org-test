@@ -1,0 +1,29 @@
+{
+  "name": "hortsoc-org",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "verify:deploy": "npm run test:inventory && npm run build",
+    "rehydrate:canon": "node scripts/rehydration/generate-canon-pack.mjs",
+    "rehydrate:full": "node scripts/rehydration/generate-full-pack.mjs",
+    "inventory": "node scripts/inventory/build-url-inventory.mjs",
+    "inventory:crawl": "node scripts/inventory/crawl-site.mjs",
+    "inventory:sitemap": "node scripts/inventory/parse-sitemap.mjs",
+    "inventory:normalize": "node scripts/inventory/normalize-urls.mjs",
+    "inventory:refine": "node scripts/inventory/refine-inventory.mjs",
+    "inventory:wordpress": "node scripts/inventory/parse-wordpress-export.mjs",
+    "inventory:reconcile": "node scripts/inventory/reconcile-wordpress-inventory.mjs",
+    "inventory:redirects": "node scripts/inventory/build-redirect-candidates.mjs",
+    "inventory:assets:audit": "node scripts/inventory/audit-runtime-assets.mjs",
+    "inventory:redirects:final": "node scripts/inventory/generate-redirect-artifact.mjs",
+    "export:public": "node scripts/release/export-public-site.mjs",
+    "test:inventory": "node --test tests/inventory/*.test.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}

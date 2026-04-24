@@ -1,0 +1,125 @@
+---
+import { withBase } from "../lib/urls.mjs";
+
+const { sections = [] } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
+
+function getSectionItemCount(section) {
+  return section.groups.reduce((count, group) => count + group.items.length, 0);
+}
+
+function getSectionPreview(section) {
+  return section.groups.flatMap((group) => group.items).at(0) ?? null;
+}
+---
+
+<section class="gallery-index page-shell">
+  {sections.map((section) => {
+    const preview = getSectionPreview(section);
+    const itemCount = getSectionItemCount(section);
+
+    return (
+      <article class="gallery-index-card">
+        {preview ? (
+          <a class="gallery-index-image" href={withBase(section.path, basePath)}>
+            <img src={withBase(preview.image_url, basePath)} alt={preview.caption ?? `${section.title} preview`} loading="lazy" />
+          </a>
+        ) : null}
+
+        <div class="gallery-index-copy page-content">
+          <h2>
+            <a href={withBase(section.path, basePath)}>{section.title}</a>
+          </h2>
+          <p>{section.summary}</p>
+          <p class="gallery-index-meta">
+            {itemCount} image{itemCount === 1 ? "" : "s"}
+          </p>
+          <a class="gallery-index-link" href={withBase(section.path, basePath)}>
+            View gallery <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    );
+  })}
+</section>
+
+<style>
+  .gallery-index {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    padding-inline: var(--page-shell-padding);
+    box-sizing: border-box;
+  }
+
+  .gallery-index-card {
+    display: grid;
+    gap: 1rem;
+    border-top: 1px solid #e1e1dc;
+    padding-top: 1.5rem;
+  }
+
+  .gallery-index-card:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .gallery-index-image {
+    display: block;
+    background: #f6f6f3;
+  }
+
+  .gallery-index-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .gallery-index-copy {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .gallery-index-copy h2 {
+    margin-bottom: 0.2rem;
+  }
+
+  .gallery-index-copy h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gallery-index-copy p {
+    margin-bottom: 0;
+  }
+
+  .gallery-index-meta {
+    color: #777;
+    font-size: 0.95rem;
+    margin-top: 0.15rem;
+  }
+
+  .gallery-index-link {
+    color: #6b8619;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .gallery-index-link:visited {
+    color: #6b8619;
+  }
+
+  @media (max-width: 56rem) {
+    .gallery-index {
+      padding-inline: var(--site-inner-padding);
+    }
+  }
+
+  @media (min-width: 52rem) {
+    .gallery-index-card {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      align-items: start;
+      gap: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,264 @@
+---
+import {
+  footerFindUs,
+  footerMiddleSections,
+  footerNavigation,
+  footerSearch,
+} from "../content/site-navigation.mjs";
+import { siteBrand } from "../content/site-assets.mjs";
+import { withBase } from "../lib/urls.mjs";
+
+const basePath = import.meta.env.BASE_URL;
+---
+
+<footer class="site-footer">
+  <div class="footer-band">
+    <div class="footer-grid">
+      <section class="footer-column footer-find-us" aria-labelledby="footer-find-us-heading">
+        <h2 id="footer-find-us-heading">{footerFindUs.title}</h2>
+        <div class="footer-map-shell">
+          <iframe
+            src={footerFindUs.map.embed_url}
+            title={footerFindUs.map.title}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+        </div>
+        <p class="footer-address">
+          <a href={footerFindUs.address.href} target="_blank" rel="noreferrer">
+            {footerFindUs.address.label}
+          </a>
+        </p>
+      </section>
+
+      <section class="footer-column footer-middle" aria-labelledby="footer-links-heading">
+        {footerMiddleSections.map((section, index) => (
+          <div class="footer-link-group">
+            <h2 id={index === 0 ? "footer-links-heading" : undefined}>{section.title}</h2>
+            <ul>
+              {section.items.map((item) => (
+                <li>
+                  <a href={item.external ? item.href : withBase(item.href, basePath)} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <nav class="footer-quick-nav" aria-label="Footer quick links">
+          <ul class="quick-links">
+            {footerNavigation.map((item) => (
+              <li><a href={withBase(item.href, basePath)}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </section>
+
+      <section class="footer-column footer-search" aria-labelledby="footer-search-heading">
+        <h2 id="footer-search-heading">{footerSearch.title}</h2>
+        <form role="search" method="get" class="footer-search-form" action={withBase(footerSearch.action, basePath)}>
+          <label class="footer-search-label">
+            <span class="sr-only">Search for:</span>
+            <input type="search" class="footer-search-input" placeholder={footerSearch.placeholder} name={footerSearch.field_name} />
+          </label>
+          <input type="submit" class="footer-search-submit" value={footerSearch.button_label} />
+        </form>
+        <p class="footer-name">{siteBrand.name}</p>
+        <p class="footer-note">{siteBrand.footerNote}</p>
+      </section>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 0;
+  }
+
+  .site-footer p,
+  .site-footer ul,
+  .site-footer h2 {
+    margin: 0;
+  }
+
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-band {
+    background: transparent;
+  }
+
+  .footer-grid {
+    width: var(--site-frame-width);
+    margin: 0 auto;
+    padding: 2rem clamp(2rem, 5vw, 5rem) 1.9rem;
+    display: grid;
+    gap: var(--site-column-gap);
+    background: #f0f0f0;
+    border-top: 1px solid rgba(198, 198, 198, 0.9);
+    color: #5f5f5f;
+    box-sizing: border-box;
+  }
+
+  .footer-column {
+    min-width: 0;
+  }
+
+  .site-footer h2 {
+    margin-bottom: 0.8rem;
+    font-family: var(--font-ui);
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #666666;
+  }
+
+  .site-footer h2::before,
+  .site-footer h2::after {
+    content: "-";
+  }
+
+  .site-footer h2::before {
+    margin-right: 0.45rem;
+  }
+
+  .site-footer h2::after {
+    margin-left: 0.45rem;
+  }
+
+  .site-footer a {
+    color: #666666;
+    text-decoration: none;
+  }
+
+  .footer-map-shell {
+    border: 1px solid rgba(198, 198, 198, 0.9);
+    background: #e9ece6;
+    min-height: 13.5rem;
+    overflow: hidden;
+  }
+
+  .footer-map-shell iframe {
+    display: block;
+    width: 100%;
+    height: 13.5rem;
+    border: 0;
+  }
+
+  .footer-address {
+    margin-top: 0.8rem;
+    text-align: center;
+    font-size: 0.93rem;
+    color: #666666;
+  }
+
+  .footer-middle {
+    display: grid;
+    gap: 1.05rem;
+  }
+
+  .footer-link-group {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .footer-link-group ul {
+    display: grid;
+    gap: 0.24rem;
+    text-align: center;
+    font-size: 0.92rem;
+  }
+
+  .footer-quick-nav {
+    margin-top: 0.45rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(198, 198, 198, 0.9);
+  }
+
+  .quick-links {
+    display: grid;
+    gap: 0.2rem;
+    text-align: center;
+    font-size: 0.91rem;
+  }
+
+  .footer-search {
+    display: grid;
+    gap: 0.8rem;
+    align-content: start;
+  }
+
+  .footer-search-form {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .footer-search-input,
+  .footer-search-submit {
+    font: inherit;
+  }
+
+  .footer-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.62rem 0.75rem;
+    border: 1px solid rgba(198, 198, 198, 0.9);
+    background: #fff;
+    color: #666666;
+  }
+
+  .footer-search-submit {
+    width: fit-content;
+    padding: 0.52rem 0.9rem;
+    border: 1px solid rgba(198, 198, 198, 0.9);
+    background: #ffffff;
+    color: #666666;
+    cursor: pointer;
+  }
+
+  .footer-name {
+    font-weight: 700;
+    font-size: 0.94rem;
+    color: #666666;
+  }
+
+  .footer-note {
+    font-size: 0.89rem;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  @media (min-width: 52rem) {
+    .footer-grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.9fr);
+      align-items: start;
+    }
+
+    .footer-middle {
+      padding-inline: clamp(0.4rem, 1.2vw, 1rem);
+    }
+
+    .footer-search {
+      padding-left: clamp(0.1rem, 0.9vw, 0.6rem);
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

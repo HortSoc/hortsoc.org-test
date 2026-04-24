@@ -1,0 +1,24 @@
+---
+import PagePlaceholderNotice from "../components/PagePlaceholderNotice.astro";
+import SitePageView from "../components/SitePageView.astro";
+import { getGalleryCollectionsForPath } from "../lib/gallery-data.mjs";
+import { sitePages } from "../content/site-pages.mjs";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const migratedPageModules = import.meta.glob("../content/pages/*.md", { eager: true });
+const migratedPagesByPath = new Map(
+  Object.values(migratedPageModules).map((module) => [module.frontmatter.path, module]),
+);
+
+const page = sitePages.find((entry) => entry.path === "/");
+const migratedPage = migratedPagesByPath.get("/") ?? null;
+const resolvedPage = migratedPage?.frontmatter ? { ...page, ...migratedPage.frontmatter } : page;
+const galleryCollections = getGalleryCollectionsForPath(page.path);
+const pageTitle = "Hortsoc.org";
+---
+
+<BaseLayout title={pageTitle} description="Community horticulture, shows, planting, and local growing knowledge.">
+  <SitePageView page={page} migratedPage={migratedPage} galleryCollections={galleryCollections}>
+    <PagePlaceholderNotice slot="placeholder" page={resolvedPage} />
+  </SitePageView>
+</BaseLayout>

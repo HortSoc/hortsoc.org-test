@@ -1,0 +1,79 @@
+---
+import { siteAssetPlan } from "../content/site-assets.mjs";
+import { withBase } from "../lib/urls.mjs";
+
+const { page, Content, heroKey } = Astro.props;
+const heroAsset = heroKey ? siteAssetPlan.page_heroes?.[heroKey] : null;
+const basePath = import.meta.env.BASE_URL;
+---
+
+<section class="editorial-page">
+  {
+    heroAsset ? (
+      <div class="editorial-hero">
+        <img src={withBase(heroAsset.current_path, basePath)} alt={heroAsset.alt} />
+      </div>
+    ) : null
+  }
+
+  <article class="editorial-article">
+    <p class="editorial-label">{page.title.toUpperCase()}</p>
+    <div class="editorial-content page-content">
+      <Content />
+    </div>
+  </article>
+</section>
+
+<style>
+  .editorial-page {
+    display: grid;
+    gap: 0;
+    background: #ffffff;
+  }
+
+  .editorial-hero {
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .editorial-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 495;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .editorial-article {
+    width: var(--page-shell-width);
+    margin: -5.7rem auto 0;
+    background: #ffffff;
+    padding: 1.6rem var(--page-shell-padding) 0;
+    box-sizing: border-box;
+  }
+
+  .editorial-label {
+    margin: 0 0 1.8rem;
+    font-family: var(--font-ui);
+    font-size: clamp(1.15rem, 2.1vw, 1.55rem);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5f5f5f;
+  }
+
+  .editorial-content {
+    max-width: var(--page-copy-width);
+    color: var(--page-copy-color);
+  }
+
+  @media (max-width: 56rem) {
+    .editorial-article {
+      width: calc(100% - 2rem);
+      margin-top: 0;
+      padding: 1.4rem var(--site-inner-padding) 0;
+    }
+  }
+</style>
