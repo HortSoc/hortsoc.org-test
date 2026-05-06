@@ -5,33 +5,37 @@ path: /annual-show/
 source_url: https://hortsoc.org/annual-show/
 migration_status: migrated
 notes: Converted from a Gutenberg-backed WordPress page. Empty spacer paragraphs and block comments were removed; document links, form links, and contact details were preserved.
+annual_show:
+  date_text: 25th July 2026
+  theme: Celebrating 100 Years of David Attenborough
+  gallery_notice: Photographs of the 2024 Show can be found in the Gallery.
+  gallery_url: /gallery/
+  competition:
+    heading: 2026 Show Competition Schedule and Entry Form
+    schedule:
+      year: "2025"
+      label: Show Schedule
+      file: /media/documents/annual-show/20250513-schedule-combined-v3.pdf
+      note: 2026 will be available soon.
+    entry_form:
+      year: "2025"
+      label: Show Entry Form
+      url: https://docs.google.com/forms/d/e/1FAIpQLSdc1N19CVBOSouRzV0cz9jv4VFSQVoDGJ9u4sxqZ8x0FptJRA/viewform?usp=header
+      note: 2026 will be available soon.
+    notes_for_exhibitors:
+      label: Notes for Exhibitors
+      file: /media/documents/annual-show/notes-for-exhibitors.pdf
+  stallholders:
+    heading: Stallholder Information
+    intro: Please contact our Honorary Secretary, Liz Tierney, for further information on booking a stall.
+    phone: 07988 086161
+    email: liz.tierney100@btinternet.com
+    letter:
+      year: "2025"
+      label: Letter to Stallholders
+      file: /media/documents/annual-show/stallholders-letter-2025.pdf
+    application:
+      year: "2025"
+      label: Application Form for Stallholders
+      url: https://docs.google.com/forms/d/e/1FAIpQLSfHH5j-peeAsppvAKzVNGvSPDhV_cNy42yTLbamNOf08ix4yw/viewform
 ---
-
-25thJuly 2026
-
-**Celebrating 100 Years of David Attenborough**
-
-**Photographs of the 2024 Show can be found in the [Gallery](/gallery/).**
-
----
-
-### 2026 Show Competition Schedule and Entry Form
-
-2025 **[Show Schedule](/media/documents/annual-show/20250513-schedule-combined-v3.pdf)**. 2026 will be available soon.
-
-2025 **[Show Entry Form](https://docs.google.com/forms/d/e/1FAIpQLSdc1N19CVBOSouRzV0cz9jv4VFSQVoDGJ9u4sxqZ8x0FptJRA/viewform?usp=header)**. 2026 will be available soon.
-
-**[Notes for Exhibitors](/media/documents/annual-show/notes-for-exhibitors.pdf)**
-
----
-
-### Stallholder Information
-
-Please contact our Honorary Secretary, Liz Tierney, for further information on booking a stall.
-
-tel. 07988 086161  
-e: [liz.tierney100@btinternet.com](mailto:liz.tierney100@btinternet.com)
-
-2025 **[Letter to Stallholders](/media/documents/annual-show/stallholders-letter-2025.pdf)**
-
-2025 **[Application Form for Stallholders](https://docs.google.com/forms/d/e/1FAIpQLSfHH5j-peeAsppvAKzVNGvSPDhV_cNy42yTLbamNOf08ix4yw/viewform)**

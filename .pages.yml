@@ -14,6 +14,11 @@ media:
     input: public/media/galleries
     output: /media/galleries
     categories: [image]
+  - name: documents
+    label: Documents
+    input: public/media/documents
+    output: /media/documents
+    categories: [document]
   - name: uploads
     label: Shared Uploads
     input: public/media/uploads
@@ -147,6 +152,163 @@ content:
                       - name: alt
                         label: Alt Text
                         type: string
+      - name: annual_show
+        label: Annual Show
+        type: file
+        path: src/content/pages/annual-show.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: status
+            label: Status
+            type: select
+            required: false
+            options:
+              values:
+                - value: draft
+                  label: Draft
+                - value: published
+                  label: Published
+          - name: path
+            label: Public URL
+            type: string
+            readonly: true
+            required: false
+          - name: annual_show
+            label: Annual Show Details
+            type: object
+            fields:
+              - name: date_text
+                label: Show Date
+                type: string
+              - name: theme
+                label: Theme
+                type: string
+              - name: gallery_notice
+                label: Gallery Notice
+                type: string
+                required: false
+              - name: gallery_url
+                label: Gallery Link
+                type: string
+                required: false
+              - name: competition
+                label: Competition Documents
+                type: object
+                fields:
+                  - name: heading
+                    label: Section Heading
+                    type: string
+                  - name: schedule
+                    label: Show Schedule
+                    type: object
+                    fields:
+                      - name: year
+                        label: Display Year
+                        type: string
+                      - name: label
+                        label: Link Label
+                        type: string
+                      - name: file
+                        label: PDF
+                        type: file
+                        options:
+                          media: documents
+                          path: annual-show
+                          extensions: [pdf]
+                      - name: note
+                        label: Note After Link
+                        type: string
+                        required: false
+                  - name: entry_form
+                    label: Entry Form
+                    type: object
+                    fields:
+                      - name: year
+                        label: Display Year
+                        type: string
+                      - name: label
+                        label: Link Label
+                        type: string
+                      - name: url
+                        label: Form URL
+                        type: string
+                      - name: note
+                        label: Note After Link
+                        type: string
+                        required: false
+                  - name: notes_for_exhibitors
+                    label: Notes for Exhibitors
+                    type: object
+                    fields:
+                      - name: label
+                        label: Link Label
+                        type: string
+                      - name: file
+                        label: PDF
+                        type: file
+                        options:
+                          media: documents
+                          path: annual-show
+                          extensions: [pdf]
+              - name: stallholders
+                label: Stallholders
+                type: object
+                fields:
+                  - name: heading
+                    label: Section Heading
+                    type: string
+                  - name: intro
+                    label: Intro
+                    type: text
+                  - name: phone
+                    label: Phone
+                    type: string
+                    required: false
+                  - name: email
+                    label: Email
+                    type: string
+                    required: false
+                  - name: letter
+                    label: Stallholders Letter
+                    type: object
+                    fields:
+                      - name: year
+                        label: Display Year
+                        type: string
+                      - name: label
+                        label: Link Label
+                        type: string
+                      - name: file
+                        label: PDF
+                        type: file
+                        options:
+                          media: documents
+                          path: annual-show
+                          extensions: [pdf]
+                  - name: application
+                    label: Stallholders Application
+                    type: object
+                    fields:
+                      - name: year
+                        label: Display Year
+                        type: string
+                      - name: label
+                        label: Link Label
+                        type: string
+                      - name: url
+                        label: Form URL
+                        type: string
+          - name: body
+            label: Additional Copy
+            type: rich-text
+            required: false
+            options:
+              format: markdown
+              media: uploads
+              path: pages
       - name: ordinary_pages
         label: Ordinary Pages
         type: collection
@@ -155,6 +317,7 @@ content:
         format: yaml-frontmatter
         exclude:
           - home.md
+          - annual-show.md
           - blog.md
           - gallery.md
           - gallery-annual-show-2024.md

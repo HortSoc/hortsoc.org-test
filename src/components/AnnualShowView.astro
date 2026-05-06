@@ -1,0 +1,149 @@
+---
+import PageHero from "./PageHero.astro";
+import { withBase } from "../lib/urls.mjs";
+
+const { page, Content } = Astro.props;
+const annualShow = page.annual_show ?? {};
+const basePath = import.meta.env.BASE_URL;
+
+const internalHref = (href) => withBase(href, basePath);
+const linkHref = (href) => href?.startsWith("/") ? internalHref(href) : href;
+const hasContent = Boolean(Content);
+
+const renderResource = (resource) => {
+  if (!resource?.file && !resource?.url) {
+    return null;
+  }
+
+  return {
+    year: resource.year,
+    label: resource.label,
+    href: linkHref(resource.file ?? resource.url),
+    note: resource.note,
+  };
+};
+
+const competitionResources = [
+  renderResource(annualShow.competition?.schedule),
+  renderResource(annualShow.competition?.entry_form),
+  renderResource(annualShow.competition?.notes_for_exhibitors),
+].filter(Boolean);
+
+const stallholderResources = [
+  renderResource(annualShow.stallholders?.letter),
+  renderResource(annualShow.stallholders?.application),
+].filter(Boolean);
+---
+
+<PageHero title={page.title} />
+
+<article class="annual-show page-shell page-content">
+  <header class="annual-show-intro">
+    {annualShow.date_text ? <p class="show-date">{annualShow.date_text}</p> : null}
+    {annualShow.theme ? <p class="show-theme"><strong>{annualShow.theme}</strong></p> : null}
+    {
+      annualShow.gallery_notice && annualShow.gallery_url ? (
+        <p class="show-gallery">
+          <strong><a href={internalHref(annualShow.gallery_url)}>{annualShow.gallery_notice}</a></strong>
+        </p>
+      ) : annualShow.gallery_notice ? (
+        <p class="show-gallery"><strong>{annualShow.gallery_notice}</strong></p>
+      ) : null
+    }
+    {hasContent ? <div class="additional-copy"><Content /></div> : null}
+  </header>
+
+  <section class="annual-show-section">
+    <h2>{annualShow.competition?.heading ?? "Show Competition Schedule and Entry Form"}</h2>
+    <div class="resource-list">
+      {
+        competitionResources.map((resource) => (
+          <p>
+            {resource.year ? <span>{resource.year} </span> : null}
+            <strong><a href={resource.href}>{resource.label}</a></strong>
+            {resource.note ? <span>. {resource.note}</span> : null}
+          </p>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="annual-show-section">
+    <h2>{annualShow.stallholders?.heading ?? "Stallholder Information"}</h2>
+    {annualShow.stallholders?.intro ? <p>{annualShow.stallholders.intro}</p> : null}
+    {
+      annualShow.stallholders?.phone ? (
+        <p class="contact-line">tel. {annualShow.stallholders.phone}</p>
+      ) : null
+    }
+    {
+      annualShow.stallholders?.email ? (
+        <p class="contact-line">
+          e: <a href={`mailto:${annualShow.stallholders.email}`}>{annualShow.stallholders.email}</a>
+        </p>
+      ) : null
+    }
+    <div class="resource-list stallholder-resources">
+      {
+        stallholderResources.map((resource) => (
+          <p>
+            {resource.year ? <span>{resource.year} </span> : null}
+            <strong><a href={resource.href}>{resource.label}</a></strong>
+            {resource.note ? <span>. {resource.note}</span> : null}
+          </p>
+        ))
+      }
+    </div>
+  </section>
+</article>
+
+<style>
+  .annual-show {
+    padding: var(--page-shell-padding);
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  .annual-show-intro,
+  .annual-show-section {
+    max-width: var(--page-copy-width);
+  }
+
+  .annual-show-intro {
+    padding-bottom: 1.7rem;
+    margin-bottom: 1.9rem;
+    border-bottom: 1px solid rgba(71, 94, 49, 0.18);
+  }
+
+  .annual-show-section {
+    padding-bottom: 1.7rem;
+    margin-bottom: 1.9rem;
+    border-bottom: 1px solid rgba(71, 94, 49, 0.18);
+  }
+
+  .annual-show-section:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .show-date,
+  .show-theme,
+  .show-gallery {
+    margin-bottom: 1.15rem;
+  }
+
+  .resource-list p,
+  .contact-line {
+    margin-bottom: 0.65rem;
+  }
+
+  .stallholder-resources {
+    margin-top: 1.45rem;
+  }
+
+  @media (max-width: 56rem) {
+    .annual-show {
+      padding-inline: var(--site-inner-padding);
+    }
+  }
+</style>
