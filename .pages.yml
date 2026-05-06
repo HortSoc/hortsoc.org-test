@@ -14,6 +14,11 @@ media:
     input: public/media/galleries
     output: /media/galleries
     categories: [image]
+  - name: annual_show_documents
+    label: Annual Show Documents
+    input: public/media/documents/annual-show
+    output: /media/documents/annual-show
+    categories: [document]
   - name: documents
     label: Documents
     input: public/media/documents
@@ -215,8 +220,7 @@ content:
                         label: PDF
                         type: file
                         options:
-                          media: documents
-                          path: annual-show
+                          media: annual_show_documents
                           extensions: [pdf]
                       - name: note
                         label: Note After Link
@@ -250,8 +254,7 @@ content:
                         label: PDF
                         type: file
                         options:
-                          media: documents
-                          path: annual-show
+                          media: annual_show_documents
                           extensions: [pdf]
               - name: stallholders
                 label: Stallholders
@@ -285,8 +288,7 @@ content:
                         label: PDF
                         type: file
                         options:
-                          media: documents
-                          path: annual-show
+                          media: annual_show_documents
                           extensions: [pdf]
                   - name: application
                     label: Stallholders Application
