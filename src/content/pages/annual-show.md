@@ -18,6 +18,7 @@ annual_show:
       year: "2026"
       label: Show Schedule
       file: /media/documents/annual-show/20260502_Schedule for website.pdf
+      note: Test
     entry_form:
       year: "2025"
       label: Show Entry Form
