@@ -29,6 +29,10 @@ const competitionResources = [
   renderResource(annualShow.competition?.notes_for_exhibitors),
 ].filter(Boolean);
 
+const atTheShowResources = [
+  renderResource(annualShow.at_the_show?.judging_guidelines),
+].filter(Boolean);
+
 const stallholderResources = [
   renderResource(annualShow.stallholders?.letter),
   renderResource(annualShow.stallholders?.application),
@@ -67,6 +71,25 @@ const stallholderResources = [
       }
     </div>
   </section>
+
+  {
+    atTheShowResources.length ? (
+      <section class="annual-show-section">
+        <h2>{annualShow.at_the_show?.heading ?? "At the Show"}</h2>
+        <div class="resource-list">
+          {
+            atTheShowResources.map((resource) => (
+              <p>
+                {resource.year ? <span>{resource.year} </span> : null}
+                <strong><a href={resource.href}>{resource.label}</a></strong>
+                {resource.note ? <span>. {resource.note}</span> : null}
+              </p>
+            ))
+          }
+        </div>
+      </section>
+    ) : null
+  }
 
   <section class="annual-show-section">
     <h2>{annualShow.stallholders?.heading ?? "Stallholder Information"}</h2>

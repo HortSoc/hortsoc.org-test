@@ -256,6 +256,26 @@ content:
                         options:
                           media: annual_show_documents
                           extensions: [pdf]
+              - name: at_the_show
+                label: At the Show
+                type: object
+                fields:
+                  - name: heading
+                    label: Section Heading
+                    type: string
+                  - name: judging_guidelines
+                    label: Judging Guidelines
+                    type: object
+                    fields:
+                      - name: label
+                        label: Link Label
+                        type: string
+                      - name: file
+                        label: PDF
+                        type: file
+                        options:
+                          media: annual_show_documents
+                          extensions: [pdf]
               - name: stallholders
                 label: Stallholders
                 type: object

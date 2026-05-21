@@ -4,9 +4,7 @@ status: published
 path: /annual-show/
 source_url: https://hortsoc.org/annual-show/
 migration_status: migrated
-notes: Converted from a Gutenberg-backed WordPress page. Empty spacer paragraphs
-  and block comments were removed; document links, form links, and contact
-  details were preserved.
+notes: Converted from a Gutenberg-backed WordPress page. Empty spacer paragraphs and block comments were removed; document links, form links, and contact details were preserved.
 annual_show:
   date_text: 25th July 2026
   theme: Celebrating 100 Years of David Attenborough
@@ -15,10 +13,10 @@ annual_show:
   competition:
     heading: 2026 Show Competition Schedule and Entry Form
     schedule:
-      year: "2026"
+      year: "2025"
       label: Show Schedule
-      file: /media/documents/annual-show/20260502_Schedule for website.pdf
-      note: Test
+      file: /media/documents/annual-show/20250513-schedule-combined-v3.pdf
+      note: 2026 will be available soon.
     entry_form:
       year: "2025"
       label: Show Entry Form
@@ -27,10 +25,14 @@ annual_show:
     notes_for_exhibitors:
       label: Notes for Exhibitors
       file: /media/documents/annual-show/notes-for-exhibitors.pdf
+  at_the_show:
+    heading: At the Show
+    judging_guidelines:
+      label: Judging Guidelines for Allotments, Front Gardens, Pubs and Community Gardens.
+      file: /media/documents/annual-show/judging-guidelines-allotments-front-gardens-pubs-community-gardens.pdf
   stallholders:
     heading: Stallholder Information
-    intro: Please contact our Honorary Secretary, Liz Tierney, for further
-      information on booking a stall.
+    intro: Please contact our Honorary Secretary, Liz Tierney, for further information on booking a stall.
     phone: 07988 086161
     email: liz.tierney100@btinternet.com
     letter:

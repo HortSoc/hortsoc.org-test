@@ -31,6 +31,10 @@ const pages = defineCollection({
         entry_form: annualShowResource.optional(),
         notes_for_exhibitors: annualShowResource.optional(),
       }).optional(),
+      at_the_show: z.object({
+        heading: z.string().optional(),
+        judging_guidelines: annualShowResource.optional(),
+      }).optional(),
       stallholders: z.object({
         heading: z.string().optional(),
         intro: z.string().optional(),
