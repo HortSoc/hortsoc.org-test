@@ -75,8 +75,8 @@ const stallholderResources = [
   {
     atTheShowResources.length ? (
       <section class="annual-show-section">
-        <h2>{annualShow.at_the_show?.heading ?? "At the Show"}</h2>
         <div class="resource-list">
+          <p class="resource-heading"><strong>{annualShow.at_the_show?.heading ?? "At the Show"}</strong></p>
           {
             atTheShowResources.map((resource) => (
               <p>
@@ -147,6 +147,11 @@ const stallholderResources = [
   .annual-show-section:last-child {
     border-bottom: 0;
     margin-bottom: 0;
+  }
+
+  .annual-show-section h2,
+  .resource-heading strong {
+    color: var(--color-accent);
   }
 
   .show-date,
