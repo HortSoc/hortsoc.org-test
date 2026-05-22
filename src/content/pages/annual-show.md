@@ -26,7 +26,7 @@ annual_show:
       label: Notes for Exhibitors
       file: /media/documents/annual-show/notes-for-exhibitors.pdf
   at_the_show:
-    heading: At the Show
+    heading: at the Show
     judging_guidelines:
       label: Judging Guidelines for Allotments, Front Gardens, Pubs and Community Gardens.
       file: /media/documents/annual-show/judging-guidelines-allotments-front-gardens-pubs-community-gardens.pdf

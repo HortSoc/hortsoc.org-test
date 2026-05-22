@@ -26,12 +26,11 @@ const renderResource = (resource) => {
 const competitionResources = [
   renderResource(annualShow.competition?.schedule),
   renderResource(annualShow.competition?.entry_form),
-  renderResource(annualShow.competition?.notes_for_exhibitors),
 ].filter(Boolean);
 
-const atTheShowResources = [
-  renderResource(annualShow.at_the_show?.judging_guidelines),
-].filter(Boolean);
+const notesForExhibitors = renderResource(annualShow.competition?.notes_for_exhibitors);
+const atTheShowText = annualShow.at_the_show?.heading ?? "at the Show";
+const judgingGuidelines = renderResource(annualShow.at_the_show?.judging_guidelines);
 
 const stallholderResources = [
   renderResource(annualShow.stallholders?.letter),
@@ -69,27 +68,27 @@ const stallholderResources = [
           </p>
         ))
       }
+      {
+        notesForExhibitors ? (
+          <p>
+            {notesForExhibitors.year ? <span>{notesForExhibitors.year} </span> : null}
+            <strong><a href={notesForExhibitors.href}>{notesForExhibitors.label}</a></strong>
+            {atTheShowText ? <span> {atTheShowText}</span> : null}
+            {notesForExhibitors.note ? <span>. {notesForExhibitors.note}</span> : null}
+          </p>
+        ) : null
+      }
+      {
+        judgingGuidelines ? (
+          <p>
+            {judgingGuidelines.year ? <span>{judgingGuidelines.year} </span> : null}
+            <strong><a href={judgingGuidelines.href}>{judgingGuidelines.label}</a></strong>
+            {judgingGuidelines.note ? <span>. {judgingGuidelines.note}</span> : null}
+          </p>
+        ) : null
+      }
     </div>
   </section>
-
-  {
-    atTheShowResources.length ? (
-      <section class="annual-show-section">
-        <div class="resource-list">
-          <p class="resource-heading"><strong>{annualShow.at_the_show?.heading ?? "At the Show"}</strong></p>
-          {
-            atTheShowResources.map((resource) => (
-              <p>
-                {resource.year ? <span>{resource.year} </span> : null}
-                <strong><a href={resource.href}>{resource.label}</a></strong>
-                {resource.note ? <span>. {resource.note}</span> : null}
-              </p>
-            ))
-          }
-        </div>
-      </section>
-    ) : null
-  }
 
   <section class="annual-show-section">
     <h2>{annualShow.stallholders?.heading ?? "Stallholder Information"}</h2>
@@ -149,8 +148,7 @@ const stallholderResources = [
     margin-bottom: 0;
   }
 
-  .annual-show-section h2,
-  .resource-heading strong {
+  .annual-show-section h2 {
     color: var(--color-accent);
   }
 
