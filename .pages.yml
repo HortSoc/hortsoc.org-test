@@ -261,7 +261,7 @@ content:
                 type: object
                 fields:
                   - name: heading
-                    label: Text After Notes for Exhibitors
+                    label: Link Text After Notes for Exhibitors
                     type: string
                   - name: judging_guidelines
                     label: Judging Guidelines

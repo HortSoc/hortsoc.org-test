@@ -72,8 +72,12 @@ const stallholderResources = [
         notesForExhibitors ? (
           <p>
             {notesForExhibitors.year ? <span>{notesForExhibitors.year} </span> : null}
-            <strong><a href={notesForExhibitors.href}>{notesForExhibitors.label}</a></strong>
-            {atTheShowText ? <span> {atTheShowText}</span> : null}
+            <strong>
+              <a href={notesForExhibitors.href}>
+                {notesForExhibitors.label}
+                {atTheShowText ? <span> {atTheShowText}</span> : null}
+              </a>
+            </strong>
             {notesForExhibitors.note ? <span>. {notesForExhibitors.note}</span> : null}
           </p>
         ) : null
