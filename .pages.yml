@@ -355,26 +355,48 @@ content:
             type: string
             readonly: true
             required: false
-          - name: poster
-            label: Poster
+          - name: sections
+            label: Sections
             type: object
-            required: false
+            list: true
             fields:
-              - name: heading
-                label: Heading
+              - name: type
+                label: Type
+                type: select
+                options:
+                  values:
+                    - value: poster
+                      label: Poster with Title
+                    - value: text
+                      label: Text
+              - name: title
+                label: Title
                 type: string
+                required: false
               - name: image
-                label: Image
+                label: Poster Image
                 type: image
+                required: false
                 options:
                   media: site_images
-                  path: home/posters
+                  path: pages/whats-on
               - name: alt
                 label: Alt Text
                 type: string
+                required: false
+              - name: body
+                label: Text
+                type: rich-text
+                required: false
+                options:
+                  format: markdown
+                  media: uploads
+                  path: pages
           - name: body
             label: Body
             type: rich-text
+            hidden: true
+            required: false
             options:
               format: markdown
               media: uploads
