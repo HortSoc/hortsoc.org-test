@@ -9,7 +9,7 @@ notes: Converted from a Gutenberg-backed WordPress page. Block comments, empty p
 
 ## 2026
 
-![Plant Sale on 9th May, 10am at Stoke Poges Village Hall](/media/site/home/posters/plant-sale-poster.png)
+![Summer Show on Saturday 25th July 2026 at Stoke Poges School](/media/site/home/posters/2026-show-poster.jpg)
 
 ---
 

@@ -101,11 +101,11 @@
       "body": "Of interest to 16-30 year olds, particularly students and those involved in a horticultural project. Please see What's On for further information."
     },
     "home_poster": {
-      "current_path": "/media/site/home/posters/plant-sale-poster.png",
-      "source_url": "https://hortsocorg.wordpress.com/wp-content/uploads/2019/02/2026-plant-sale-poster.png?w=620",
-      "alt": "Plant Sale on 9th May, 10am at Stoke Poges Village Hall",
+      "current_path": "/media/site/home/posters/2026-show-poster.jpg",
+      "source_url": null,
+      "alt": "Summer Show on Saturday 25th July 2026 at Stoke Poges School",
       "status": "ingested_local",
-      "notes": "Locally ingested because it is a current operational homepage poster and should not depend on the legacy host by default."
+      "notes": "Locally ingested from the supplied 2026 Summer Show poster for the homepage and What's On page."
     }
   }
 }
