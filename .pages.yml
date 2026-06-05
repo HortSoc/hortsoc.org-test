@@ -331,6 +331,54 @@ content:
               format: markdown
               media: uploads
               path: pages
+      - name: whats_on
+        label: What's On
+        type: file
+        path: src/content/pages/whats-on.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: status
+            label: Status
+            type: select
+            required: false
+            options:
+              values:
+                - value: draft
+                  label: Draft
+                - value: published
+                  label: Published
+          - name: path
+            label: Public URL
+            type: string
+            readonly: true
+            required: false
+          - name: poster
+            label: Poster
+            type: object
+            required: false
+            fields:
+              - name: heading
+                label: Heading
+                type: string
+              - name: image
+                label: Image
+                type: image
+                options:
+                  media: site_images
+                  path: home/posters
+              - name: alt
+                label: Alt Text
+                type: string
+          - name: body
+            label: Body
+            type: rich-text
+            options:
+              format: markdown
+              media: uploads
+              path: pages
       - name: ordinary_pages
         label: Ordinary Pages
         type: collection
@@ -347,6 +395,7 @@ content:
           - gallery-annual-show-2022.md
           - gallery-annual-show-2021.md
           - gallery-plant-sale-2021.md
+          - whats-on.md
           - thing-one.md
           - testimonial-872.md
           - ruth-rooley-chairman.md

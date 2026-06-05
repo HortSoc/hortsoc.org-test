@@ -5,11 +5,11 @@ path: /whats-on/
 source_url: https://hortsoc.org/whats-on/
 migration_status: migrated
 notes: Converted from a Gutenberg-backed WordPress page. Block comments, empty paragraphs, and inline color styling were removed while preserving event dates, poster images, and media links.
+poster:
+  heading: "2026"
+  image: /media/site/home/posters/2026-show-poster.jpg
+  alt: Summer Show on Saturday 25th July 2026 at Stoke Poges School
 ---
-
-## 2026
-
-![Summer Show on Saturday 25th July 2026 at Stoke Poges School](/media/site/home/posters/2026-show-poster.jpg)
 
 ---
 
