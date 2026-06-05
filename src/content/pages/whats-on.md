@@ -27,11 +27,11 @@ sections:
       - 14th October. Autumn Social. Talk and finger buffet.
   - type: poster
     title: THE EDWARD GUINNESS CUP
-    image: /media/pages/whats-on/edward-guinness-1.jpg
+    image: /media/site/pages/whats-on/edward-guinness-1.jpg
     alt: The Edward Guinness Cup information poster
   - type: poster
     title: BURSARY
-    image: /media/pages/whats-on/bursary-1.jpg
+    image: /media/site/pages/whats-on/bursary-1.jpg
     alt: Bursary information poster
   - type: text
     title: Previous events
